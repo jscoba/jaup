@@ -1,0 +1,77 @@
+-Visor de documentos:
+
+docs.google.com/gview?url="URL en formato url"&embedded=true
+
+visor de Drive: PDF, PPT, JPG...
+
+-Prezi
+
+Reproductor embebido de prezi
+
+Hay que crear una función que extraiga el prezi ID para que funcione el reproductor integrado de prezi o que carge uno en un
+iframe.
+
+-Integración con drive
+
+Hay que hacerse con la API de Drive para poder acceder a archivos privados con la cuenta de drive y descargaruna copia para
+visualizarla en una carpeta temporal porque no vamos a crear un visor, sino que vamos a usar el visor externo de drive.
+
+Para editar archivos se puede usar el documentID para entrar en el modo de edición. Se supone que el usuario tiene permisos
+de edición con su cuenta de Google.
+
+Para ver archivos se pide una copia al servidor de drive en PDF y se enlaza con el visor por medio de una carpeta temporal.
+
+
+-Estructura de archivos:
+
+/tmp --> Carpeta temporal
+/admin --> Administración del sitio: Base de datos, usuarios, institutos, mantenimiento (limpiar carpeta temporal manual)...
+/login.php --> Login, hay que realizar una rutina de login con la base de datos. Contraseñas en Base64 o MD5
+/css --> Estilos css de la página
+/trabajos --> Estructura donde se guardan los archivos. En el caso que se llene (creo que no) se podría pasar a utilizar 
+dropbox o similares para poder guardar los archivos. Preferiblemente no. Con un servidor de sered debería de ser suficiente.
+/html --> Página general. Encabezados y pies de página además de una interfaz general.
+/index.php --> Hay que hacer una página general donde se muestren por ejemplo los ultimos envíos o una página de login.
+/images --> Carpeta con todas las imágenes usadas en la plataforma.
+/images/users/ --> Carpeta con las fotos de los usuarios
+
+-Base de datos
+
+Usuarios
+	ID (AutoIncrement)
+	Nombre
+	User
+	Organización (instituto o colegio)
+	Curso
+	Password (MD5 o Base64)
+	¿Imagen? (TRUE O FALSE)
+	Categoría (Alumno, profesor o responsable del centro)
+
+Trabajos
+	ID (AutoIncrement)
+	Tipo (Prezi, Drive, Youtube o archivo)
+	Usuario que lo ha subido
+	Entregar ID (Si es parte de un envío a un profesor, a cada entrega se le asigna un ID y a cada trabajo relacionado se
+			le hace concordar con ese ID para relacionarlos y poder trabajar con ellos)
+	Fecha de entrega
+
+Institutos
+	ID (AutoIncrement)
+	Nombre
+	Localidad
+	Dirección
+	Usuario responsable
+
+
+
+-Subir archivos (upload.php)
+
+Tipo de archivo: Si es un prezi, está en Drive o es un archivo a subir desde el ordenador
+
+	Si es un prezi: Pedir la dirección del prezi y sacar el ID mediante una función similar a la del tiempo del TIA
+	Si es un documento de Docs se activa el Google picker (goo.gl/EjN7X) y se seleccióna. Si el usuario no está logueado
+		en google se le pide automáticamente el inicio de sesión.
+	Si es un archivo a subir desde el ordenador, se pone a disposición del usuario un entorno Drag&Drop para subir los
+		archivos al servidor en el directorio de trabajos y se le asigna un ID
+	Si es un video de youtube, se extrae el ID de video y se guarda en la base de datos
+
