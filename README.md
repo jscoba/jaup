@@ -1,7 +1,7 @@
 JAUP
 ====
 
-Just another uploading platform
+Just Another Uploading Platform
 
 
 Plataforma destinada a la educación para subir y entregar trabajos. Compatible con prezi, google docs y archivos normales
