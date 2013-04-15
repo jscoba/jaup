@@ -75,3 +75,14 @@ Tipo de archivo: Si es un prezi, está en Drive o es un archivo a subir desde el
 		archivos al servidor en el directorio de trabajos y se le asigna un ID
 	Si es un video de youtube, se extrae el ID de video y se guarda en la base de datos
 
+
+
+-Tipos de archivo permitidos
+
+.od* --> Documentos de OpenDocument
+.docx o similares --> Office
+.mp4 --> Videos compatibles con html5
+.mp3 --> Archivos de música compatibles con html5
+.jpg, .png, .gif --> Archivos de imagen compatibles con los navegadores standard
+.pdf --> Formato más utilizado en documentos
+
