@@ -2,7 +2,7 @@
 include_once('../html/html.php');
 encabezado();
 ?>
-<form name="registro" method="POST" action="<? echo $destino; ?>"> 
+<form name="registro" method="POST" action="<? echo 'procesar_registro.php'; ?>"> 
 <p>Nombre y Apellidos<input type="text" name="name" value="" maxlength=150 required></p>
 <p>Nombre de usuario<input type="text" name="user" value="" maxlength=150 required></p>
 <p>Contraseña <input type="password" name="pass" value="" maxlength=150 required</p>
