@@ -11,7 +11,7 @@ $v7=$POST_['tipo'];
 $v8=#Rutina con javascript para el centro educativo!!!
 
 
-$query="INSERT jaup_users '(user, pass, name, curso, image, type) VALUES ('$v1','$v2','$v3','$v4','$v5','$v7','$v8')"
+$query="INSERT jaup_users '(user, pass, name, curso, image, type) VALUES ('$v1','$v2','$v3','$v4','$v5','$v7','$v8')";
 
 $result = mysql_query($query) or die(mysql_error());
 
